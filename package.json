@@ -1,0 +1,26 @@
+{
+  "name": "Cookie-Authentication-with-Express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev":"node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mersock/Cookie-Authentication-with-Express.git"
+  },
+  "keywords": [],
+  "author": "Mersock",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mersock/Cookie-Authentication-with-Express/issues"
+  },
+  "homepage": "https://github.com/Mersock/Cookie-Authentication-with-Express#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
