@@ -14,13 +14,14 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit = event => {
-        const {email, password} = this.state;
+        this.handleLogin();
         event.preventDefault();
+    }
 
-        loginUser(email, password)
-            .then(() => {
-                Router.push('/profile');
-            });
+    async handleLogin(){
+        const {email, password} = await this.state;
+        await loginUser(email, password);
+        await Router.push('/profile');
     }
 
     render() {
