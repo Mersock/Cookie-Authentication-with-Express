@@ -14,7 +14,7 @@ class Profile extends React.Component {
 
     render() {
         return (
-                <pre>{JSON.stringify(this.state.user)}</pre>
+                <pre>{JSON.stringify(this.state.user,null,2)}</pre>
         );
     }
 }
