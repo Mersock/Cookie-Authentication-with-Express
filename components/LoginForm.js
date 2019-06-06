@@ -4,7 +4,9 @@ import Router from 'next/router';
 class LoginForm extends React.Component {
     state = {
         email: '',
-        password: ''
+        password: '',
+        error: '',
+        isLoading: false
     }
 
     handleChange = event => {
@@ -15,17 +17,28 @@ class LoginForm extends React.Component {
 
     handleSubmit = event => {
         this.handleLogin();
+        this.setState({error: ''});
         event.preventDefault();
     }
 
-    async handleLogin(){
-        const {email, password} = await this.state;
-        await loginUser(email, password);
-        await Router.push('/profile');
+    async handleLogin() {
+        try {
+            const {email, password} = await this.state;
+            await loginUser(email, password);
+            await Router.push('/profile');
+        } catch (error) {
+            this.showError(error);
+        }
+    }
+
+    showError = err => {
+        console.log(err);
+        const error = err.response && err.response.data || err.message;
+        this.setState({error, isLoading: false});
     }
 
     render() {
-        const {email, password} = this.state;
+        const {email, password, error, isLoading} = this.state;
 
         return (
             <form onSubmit={this.handleSubmit}>
@@ -41,7 +54,10 @@ class LoginForm extends React.Component {
                             onChange={this.handleChange}
                             value={password}
                 /></div>
-                <button type="submit">Submit</button>
+                <button disabled={isLoading} type="submit">
+                    {isLoading ? "Sending" :"Submit"}
+                </button>
+                <div>{error && <div>{error}</div>}</div>
             </form>
         )
     }
