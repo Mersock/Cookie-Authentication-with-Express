@@ -49,6 +49,11 @@ app.prepare().then(() => {
         res.json(userData);
     });
 
+    server.post('/api/logout', (req, res) => {
+        res.clearCookie('token',COOKIE_OPTIONS);
+        res.sendStatus(204);
+    });
+
     server.get('/api/profile', async (req, res) => {
         // console.log(1,req);
         const {signedCookies = {}} = req;
