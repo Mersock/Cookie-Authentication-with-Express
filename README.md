@@ -1,4 +1,4 @@
-# Cookie-Authentication-with-Express
+# Express-Cookie-Authentication
 
 This is Demo App build build NextJs. 
 And use API Service from http://jsonplaceholder.typicode.com/users
